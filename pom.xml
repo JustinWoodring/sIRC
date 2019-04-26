@@ -1,10 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>sIRC</groupId>
-  <artifactId>sIRC</artifactId>
+  <groupId>org.rootyjr.sirc</groupId>
+  <artifactId>simple-irc</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>sIRC</name>
   <description>A simple IRC client for terminal users.</description>
+  <dependencies>
+   	<dependency>
+	  <groupId>org.kitteh.irc</groupId>
+	  <artifactId>client-lib</artifactId>
+	  <version>7.1.0</version>
+	</dependency>
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -14,6 +21,27 @@
         <configuration>
           <release>11</release>
         </configuration>
+      </plugin>
+    <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>2.1</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>shade</goal>
+                  </goals>
+                  <configuration>
+                      <transformers>
+                          <transformer
+                              implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                              <mainClass>sirc.Main</mainClass>
+                          </transformer>
+                      </transformers>
+                  </configuration>
+              </execution>
+          </executions>
       </plugin>
     </plugins>
   </build>
