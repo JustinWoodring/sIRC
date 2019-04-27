@@ -1,6 +1,5 @@
-language: java
-
 sudo: false # faster builds
+language: java
 
 before_install:
   - echo "Testing with maven."
