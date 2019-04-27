@@ -6,4 +6,4 @@ before_install:
 
 install: true
 
-script: "mvn test -B && mvn package"
+script: "mvn package"
