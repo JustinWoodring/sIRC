@@ -1,4 +1,8 @@
-language: java
+sudo: false # faster builds
 
 before_install:
   - echo "Testing with maven."
+
+install: true
+
+script: "mvn test
